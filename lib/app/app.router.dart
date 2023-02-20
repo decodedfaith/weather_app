@@ -5,9 +5,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:flutter/foundation.dart' as _i4;
+import 'package:flutter/material.dart' as _i5;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i4;
+import 'package:stacked_services/stacked_services.dart' as _i6;
 import 'package:weather_app/ui/view/home/home_view.dart' as _i2;
 import 'package:weather_app/ui/view/locations/locations_view.dart' as _i3;
 
@@ -36,8 +38,9 @@ class StackedRouter extends _i1.RouterBase {
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
+      final args = data.getArgs<HomeViewArguments>(nullOk: false);
       return MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.HomeView(),
+        builder: (context) => _i2.HomeView(key: args.key, widget: args.widget),
         settings: data,
       );
     },
@@ -55,15 +58,29 @@ class StackedRouter extends _i1.RouterBase {
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
 
-extension NavigatorStateExtension on _i4.NavigationService {
-  Future<dynamic> navigateToHomeView([
+class HomeViewArguments {
+  const HomeViewArguments({
+    this.key,
+    required this.widget,
+  });
+
+  final _i4.Key? key;
+
+  final _i5.Widget widget;
+}
+
+extension NavigatorStateExtension on _i6.NavigationService {
+  Future<dynamic> navigateToHomeView({
+    _i4.Key? key,
+    required _i5.Widget widget,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.homeView,
+        arguments: HomeViewArguments(key: key, widget: widget),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -84,14 +101,17 @@ extension NavigatorStateExtension on _i4.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithHomeView([
+  Future<dynamic> replaceWithHomeView({
+    _i4.Key? key,
+    required _i5.Widget widget,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.homeView,
+        arguments: HomeViewArguments(key: key, widget: widget),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
