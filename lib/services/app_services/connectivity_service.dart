@@ -51,13 +51,16 @@ class ConnectivityService with ListenableServiceMixin {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        log.e('trueeeeeeeeee');
         hasConnection = true;
         networkStatus = ConnectivityStatus.online;
       } else {
+        log.e('falseeeee');
         hasConnection = false;
         networkStatus = ConnectivityStatus.offline;
       }
     } on SocketException catch (_) {
+      log.e('whattttttttttt');
       hasConnection = false;
       networkStatus = ConnectivityStatus.offline;
     }
