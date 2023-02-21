@@ -26,4 +26,5 @@ enum TemperatureUnit {
 enum OptionsMenu {
   changeCity,
   settings,
+  currentLocationWeather
 }
