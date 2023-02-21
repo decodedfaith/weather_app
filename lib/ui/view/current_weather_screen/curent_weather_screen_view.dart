@@ -3,7 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 import 'package:weather_app/model/weather.dart';
-import 'package:weather_app/ui/view/current_weather_screen/current_wweaather_screen_viewmodel.dart';
+import 'package:weather_app/ui/view/current_weather_screen/current_weather_screen_viewmodel.dart';
 import 'package:weather_app/ui/view/widgets/weather_widget.dart';
 
 class CurrentWeatherScreenView extends HookWidget {
