@@ -14,6 +14,7 @@ import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 
 import '../services/app_services/connectivity_service.dart';
 import '../services/app_services/local_storage_services.dart';
+import '../services/core_services/weather_api_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -28,6 +29,7 @@ Future<void> setupLocator(
   locator.registerLazySingleton(() => DialogService());
   locator.registerLazySingleton(() => BottomSheetService());
   locator.registerLazySingleton(() => SnackbarService());
+  locator.registerSingleton(WeatherApiService());
   final sharedPreferenceLocalStorage =
       await SharedPreferenceLocalStorage.getInstance();
   locator.registerSingleton(sharedPreferenceLocalStorage);
