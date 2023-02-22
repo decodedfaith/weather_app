@@ -12,6 +12,7 @@ class WeatherWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('jjjjjjjjjj');
     return SizedBox(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
