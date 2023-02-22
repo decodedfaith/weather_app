@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 class EmptyWidget extends StatelessWidget {
+  const EmptyWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(width: 0, height: 0,);
+    return const SizedBox(width: 0, height: 0,);
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_app/model/weather.dart';
 import 'package:weather_app/ui/view/widgets/value_tile.dart';
-import 'package:weather_app/utilities/enums.dart';
 import 'package:weather_app/utilities/themes.dart';
 
 /// Renders Weather Icon, current, min and max temperatures
@@ -11,8 +10,7 @@ class CurrentConditions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Themes.getTheme(Themes.DARK_THEME_CODE);
-    TemperatureUnit temperatureUnit = TemperatureUnit.celsius;
+    ThemeData theme = Themes.getTheme(Themes.darkThemeCode);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -32,20 +30,25 @@ class CurrentConditions extends StatelessWidget {
               color: theme.colorScheme.secondary),
         ),
         Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-          ValueTile("max",
-              '${weather.main!.tempMax}°', iconData: null,),
+          ValueTile(
+            "max",
+            '${weather.main!.tempMax}°',
+            iconData: null,
+          ),
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: Center(
                 child: Container(
               width: 1,
               height: 30,
-              color:
-                  theme.colorScheme.secondary.withAlpha(50),
+              color: theme.colorScheme.secondary.withAlpha(50),
             )),
           ),
-          ValueTile("min",
-              '${weather.main!.tempMin}°', iconData: null,),
+          ValueTile(
+            "min",
+            '${weather.main!.tempMin}°',
+            iconData: null,
+          ),
         ]),
       ],
     );

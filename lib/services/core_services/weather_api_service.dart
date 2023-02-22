@@ -65,7 +65,7 @@ class WeatherApiService {
     final url = '$baseUrl/data/2.5/forecast?q=$cityName&appid=$apiKey';
 
     final ApiResponse? res = await get(url: url);
-    //TODO:
+    //TODO:Implement getting weather forcast
 
     return [];
   }

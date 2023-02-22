@@ -4,20 +4,20 @@ class CityListDialog extends StatefulWidget {
   final List<String> cities;
   final Function(List<String>) onSelectedCitiesChanged;
 
-  CityListDialog({required this.cities, required this.onSelectedCitiesChanged});
+  const CityListDialog({super.key, required this.cities, required this.onSelectedCitiesChanged});
 
   @override
-  _CityListDialogState createState() => _CityListDialogState();
+  CityListDialogState createState() => CityListDialogState();
 }
 
-class _CityListDialogState extends State<CityListDialog> {
-  List<String> _selectedCities = [];
+class CityListDialogState extends State<CityListDialog> {
+  final List<String> _selectedCities = [];
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Select 3 cities'),
-      content: Container(
+      title: const Text('Select 3 cities'),
+      content: SizedBox(
         width: double.maxFinite,
         child: ListView.builder(
           shrinkWrap: true,
@@ -42,19 +42,19 @@ class _CityListDialogState extends State<CityListDialog> {
       ),
       actions: <Widget>[
         TextButton(
-          child: Text('Cancel'),
+          child: const Text('Cancel'),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         TextButton(
-          child: Text('OK'),
           onPressed: _selectedCities.length == 3
               ? () {
                   widget.onSelectedCitiesChanged(_selectedCities);
                   Navigator.of(context).pop();
                 }
               : null,
+          child: const Text('OK'),
         ),
       ],
     );

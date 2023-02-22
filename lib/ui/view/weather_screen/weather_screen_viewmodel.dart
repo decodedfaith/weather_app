@@ -11,13 +11,12 @@ import 'package:weather_app/utilities/themes.dart';
 
 class WeatherScreenViewModel extends BaseViewModel {
   WeatherResponse? weather;
-  ThemeData theme = Themes.getTheme(Themes.DARK_THEME_CODE);
+  ThemeData theme = Themes.getTheme(Themes.darkThemeCode);
   List<String> cities = ['lagos', 'Osun', 'Oyo'];
   List<WeatherResponse> citiesWeatherResponse = [];
 
   Future<void> initState() async {
-
-    //Retrieve Cached List of strings 
+    //Retrieve Cached List of strings
     List<String>? retrivedList =
         sharedPreferencesService.getStringList(storedCitiesListKey);
 
@@ -40,7 +39,7 @@ class WeatherScreenViewModel extends BaseViewModel {
         showCityChangeDialog(context);
         break;
       case OptionsMenu.settings:
-      //TODO: Implement Settings
+        //TODO: Implement Settings
         break;
       case OptionsMenu.currentLocationWeather:
         navigationService.navigateTo(Routes.currentWeatherScreenView);

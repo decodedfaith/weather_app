@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:weather_app/model/weather.dart';
 import 'package:weather_app/ui/view/widgets/forecast_horizontal_widget.dart';
 import 'package:weather_app/ui/view/widgets/value_tile.dart';
-import 'package:weather_app/utilities/themes.dart';
 
 class WeatherWidget extends StatelessWidget {
   final WeatherResponse weather;

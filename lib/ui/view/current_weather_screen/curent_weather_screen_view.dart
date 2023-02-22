@@ -13,8 +13,7 @@ class CurrentWeatherScreenView extends HookWidget {
   Widget build(BuildContext context) {
     AnimationController fadeController =
         useAnimationController(duration: const Duration(milliseconds: 1000));
-    Animation<double> fadeAnimation =
-        CurvedAnimation(parent: fadeController, curve: Curves.easeIn);
+   
 
     return ViewModelBuilder<CurrentWeatherScreenViewModel>.reactive(
       builder: (context, model, child) => Scaffold(

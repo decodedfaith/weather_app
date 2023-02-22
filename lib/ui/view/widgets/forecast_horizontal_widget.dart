@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/model/weather.dart';
 import 'package:weather_app/ui/view/widgets/value_tile.dart';
-import 'package:weather_app/utilities/themes.dart';
 
 /// Renders a horizontal scrolling list of weather conditions
 /// Used to show forecast
@@ -17,7 +16,6 @@ class ForecastHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Themes.getTheme(Themes.DARK_THEME_CODE);
     return SizedBox(
       height: 70,
       child: ListView.separated(

@@ -13,20 +13,17 @@ class ValueTile extends StatelessWidget {
   final String value;
   final IconData? iconData;
 
-  const ValueTile(this.label, this.value, {super.key,  this.iconData});
+  const ValueTile(this.label, this.value, {super.key, this.iconData});
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Themes.getTheme(Themes.DARK_THEME_CODE);
+    ThemeData theme = Themes.getTheme(Themes.darkThemeCode);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
           label,
-          style: TextStyle(
-              color: theme
-                  .colorScheme.secondary
-                  .withAlpha(80)),
+          style: TextStyle(color: theme.colorScheme.secondary.withAlpha(80)),
         ),
         const SizedBox(
           height: 5,
@@ -37,14 +34,13 @@ class ValueTile extends StatelessWidget {
                 color: theme.colorScheme.secondary,
                 size: 20,
               )
-            : EmptyWidget(),
+            : const EmptyWidget(),
         const SizedBox(
           height: 10,
         ),
         Text(
           value,
-          style:
-              TextStyle(color: theme.colorScheme.secondary),
+          style: TextStyle(color: theme.colorScheme.secondary),
         ),
       ],
     );

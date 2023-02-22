@@ -6,15 +6,15 @@ import 'package:weather_app/utilities/enums.dart';
 import 'package:weather_app/utilities/themes.dart';
 
 class HomeViewModel extends BaseViewModel {
-  ThemeData _theme = Themes.getTheme(Themes.DARK_THEME_CODE);
+  ThemeData _theme = Themes.getTheme(Themes.darkThemeCode);
   ThemeData get theme => _theme;
 
-  int themeCode = Themes.DARK_THEME_CODE;
+  int themeCode = Themes.darkThemeCode;
   TemperatureUnit temperatureUnit = TemperatureUnit.celsius;
 
   initState() {
     themeCode = sharedPreferencesService.getInt(sharedPrefKeyTheme) ??
-        Themes.DARK_THEME_CODE;
+        Themes.darkThemeCode;
 
     temperatureUnit = TemperatureUnit.values[
         sharedPreferencesService.getInt(sharedPrefKeyTemperatureUnit) ??

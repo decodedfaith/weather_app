@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/utilities/WeatherIconMapper.dart';
-
+import 'package:weather_app/utilities/weather_icon_mapper.dart';
 
 class WeatherResponse {
   final Coord? coord;
@@ -36,7 +35,11 @@ class WeatherResponse {
   factory WeatherResponse.fromJson(Map<String, dynamic> json) {
     return WeatherResponse(
       coord: json['coord'] == null ? null : Coord.fromJson(json['coord']),
-      weather: json['weather'] == null ? null : (json['weather'] as List<dynamic>).map((w) => Weather.fromJson(w)).toList(),
+      weather: json['weather'] == null
+          ? null
+          : (json['weather'] as List<dynamic>)
+              .map((w) => Weather.fromJson(w))
+              .toList(),
       base: json['base'],
       main: json['main'] == null ? null : Main.fromJson(json['main']),
       visibility: json['visibility'],
@@ -94,41 +97,41 @@ class Weather {
   IconData getIconData() {
     switch (icon) {
       case '01d':
-        return WeatherIcons.clear_day;
+        return WeatherIcons.clearDay;
       case '01n':
-        return WeatherIcons.clear_night;
+        return WeatherIcons.clearNight;
       case '02d':
-        return WeatherIcons.few_clouds_day;
+        return WeatherIcons.fewCloudsDay;
       case '02n':
-        return WeatherIcons.few_clouds_day;
+        return WeatherIcons.fewCloudsDay;
       case '03d':
       case '04d':
-        return WeatherIcons.clouds_day;
+        return WeatherIcons.cloudsDay;
       case '03n':
       case '04n':
-        return WeatherIcons.clear_night;
+        return WeatherIcons.clearNight;
       case '09d':
-        return WeatherIcons.shower_rain_day;
+        return WeatherIcons.showerRainDay;
       case '09n':
-        return WeatherIcons.shower_rain_night;
+        return WeatherIcons.showerRainNight;
       case '10d':
-        return WeatherIcons.rain_day;
+        return WeatherIcons.rainDay;
       case '10n':
-        return WeatherIcons.rain_night;
+        return WeatherIcons.rainNight;
       case '11d':
-        return WeatherIcons.thunder_storm_day;
+        return WeatherIcons.thunderStormDay;
       case '11n':
-        return WeatherIcons.thunder_storm_night;
+        return WeatherIcons.thunderStormNight;
       case '13d':
-        return WeatherIcons.snow_day;
+        return WeatherIcons.snowDay;
       case '13n':
-        return WeatherIcons.snow_night;
+        return WeatherIcons.snowNight;
       case '50d':
-        return WeatherIcons.mist_day;
+        return WeatherIcons.mistDay;
       case '50n':
-        return WeatherIcons.mist_night;
+        return WeatherIcons.mistNight;
       default:
-        return WeatherIcons.clear_day;
+        return WeatherIcons.clearDay;
     }
   }
 }
