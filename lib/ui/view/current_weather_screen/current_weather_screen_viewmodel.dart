@@ -10,6 +10,7 @@ class CurrentWeatherScreenViewModel extends BaseViewModel {
 
   Future<WeatherResponse> fetchWeatherWithLocation() async {
     //TODO: Handle nullable locationData
+    locationService.determineCurrentUserPosition();
     var long = locationService.locationData!.longitude;
     var lat = locationService.locationData!.latitude;
 

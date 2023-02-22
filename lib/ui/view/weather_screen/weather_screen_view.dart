@@ -45,20 +45,20 @@ class WeatherScreenView extends HookWidget {
           actions: <Widget>[
             PopupMenuButton<OptionsMenu>(
                 onSelected: ((value) {
-                  model.onOptionMenuItemSelected;
+                  model.onOptionMenuItemSelected(value, context);
                 }),
                 itemBuilder: (context) => <PopupMenuEntry<OptionsMenu>>[
                       const PopupMenuItem<OptionsMenu>(
                         value: OptionsMenu.changeCity,
-                        child: Text("change cities"),
+                        child: Text("Select Tab-City Items"),
                       ),
                       const PopupMenuItem<OptionsMenu>(
                         value: OptionsMenu.currentLocationWeather,
-                        child: Text("current location weather"),
+                        child: Text("Display location Data"),
                       ),
                       const PopupMenuItem<OptionsMenu>(
                         value: OptionsMenu.settings,
-                        child: Text("settings"),
+                        child: Text("Settings"),
                       ),
                     ],
                 child: Icon(
@@ -77,15 +77,18 @@ class WeatherScreenView extends HookWidget {
                 fadeController.forward();
                 return Column(
                   children: [
-                    TabBar(
-                      controller: tabController,
-                      labelColor: Colors.black,
-                      indicatorColor: Colors.black,
-                      tabs: <Widget>[
-                        Tab(text: model.citiesWeatherResponse[0].name),
-                        Tab(text: model.citiesWeatherResponse[1].name),
-                        Tab(text: model.citiesWeatherResponse[2].name),
-                      ],
+                    Container(
+                      color: model.theme.primaryColor,
+                      child: TabBar(
+                        controller: tabController,
+                        labelColor: Colors.black,
+                        indicatorColor: Colors.black,
+                        tabs: <Widget>[
+                          Tab(text: model.citiesWeatherResponse[0].name),
+                          Tab(text: model.citiesWeatherResponse[1].name),
+                          Tab(text: model.citiesWeatherResponse[2].name),
+                        ],
+                      ),
                     ),
                     Expanded(
                       child: Container(

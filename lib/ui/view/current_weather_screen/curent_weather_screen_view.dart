@@ -13,7 +13,6 @@ class CurrentWeatherScreenView extends HookWidget {
   Widget build(BuildContext context) {
     AnimationController fadeController =
         useAnimationController(duration: const Duration(milliseconds: 1000));
-   
 
     return ViewModelBuilder<CurrentWeatherScreenViewModel>.reactive(
       builder: (context, model, child) => Scaffold(
@@ -34,21 +33,23 @@ class CurrentWeatherScreenView extends HookWidget {
         ),
         backgroundColor: Colors.white,
         body: Material(
+          color: model.theme.primaryColor,
           child: FutureBuilder<WeatherResponse>(
             future: model.fetchWeatherWithLocation(),
             builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                fadeController.reset();
-                fadeController.forward();
-                return WeatherWidget(
-                  weather: snapshot.data!,
-                  theme: model.theme,
-                );
-              } else {
+              if (!snapshot.hasData) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
+              fadeController.reset();
+              fadeController.forward();
+              print('kkikikkkkk');
+              // return Text('hhhhhhhhhhhhhhhhhhh');
+              return WeatherWidget(
+                weather: model.weather!,
+                theme: model.theme,
+              );
             },
           ),
         ),

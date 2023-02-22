@@ -1,10 +1,10 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:weather_app/app/app.router.dart';
 import 'package:weather_app/app/locator_service.dart';
 import 'package:weather_app/model/weather.dart';
-import 'package:weather_app/ui/view/widgets/city_list_dialog.dart';
-import 'package:weather_app/utilities/cities.dart';
 import 'package:weather_app/utilities/constants.dart';
 import 'package:weather_app/utilities/enums.dart';
 import 'package:weather_app/utilities/themes.dart';
@@ -23,21 +23,22 @@ class WeatherScreenViewModel extends BaseViewModel {
     retrivedList != null ? cities = retrivedList : null;
   }
 
-  void showCityChangeDialog(context) {
-    CityListDialog(
-      cities: Cities.cities,
-      onSelectedCitiesChanged: (returnedList) {
-        cities = returnedList;
-        notifyListeners();
-      },
+  Future<void> showCitySelectorDialog() async {
+    var result = await dialogService.showCustomDialog(
+      variant: DialogType.citySelector,
+      title: 'Select City',
     );
+
+    if (result != null && result.confirmed) {
+      cities = result.data;
+      notifyListeners();
+    }
   }
 
   onOptionMenuItemSelected(OptionsMenu item, context) {
     switch (item) {
       case OptionsMenu.changeCity:
-        showCityChangeDialog(context);
-        break;
+        return showCitySelectorDialog();
       case OptionsMenu.settings:
         //TODO: Implement Settings
         break;
@@ -53,10 +54,13 @@ class WeatherScreenViewModel extends BaseViewModel {
   }
 
   Future<List<WeatherResponse>> fetchWeatherWithCities() async {
+     List<WeatherResponse> response = [];
+
     for (var city in cities) {
-      var rr = await weatherApiService.getWeatherData(city);
-      citiesWeatherResponse.add(rr);
+      var data = await weatherApiService.getWeatherData(city);
+      response.add(data);
     }
+    citiesWeatherResponse = response;
     return citiesWeatherResponse;
   }
 
