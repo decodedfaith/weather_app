@@ -4,7 +4,7 @@ import 'package:weather_app/app/app.logger.dart';
 class LocationService {
   LocationService._() {
     log.i('LocationService 📍 initialized');
-    _determineCurrentUserPosition();
+    determineCurrentUserPosition();
   }
   static final LocationService instance = LocationService._();
   static Future<LocationService> getInstance() => Future.value(instance);
@@ -17,7 +17,7 @@ class LocationService {
   ///
   /// When the location services are not enabled or permissions
   /// are denied the `Future` will return an error.
-  Future<void> _determineCurrentUserPosition() async {
+  Future<void> determineCurrentUserPosition() async {
     bool serviceEnabled;
     LocationPermission permission;
 
