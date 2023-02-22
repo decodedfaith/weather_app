@@ -3,6 +3,7 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:weather_app/services/app_services/connectivity_service.dart';
 import 'package:weather_app/services/app_services/local_storage_services.dart';
+import 'package:weather_app/services/app_services/location_service.dart';
 import 'package:weather_app/services/core_services/weather_api_service.dart';
 import 'package:weather_app/ui/view/current_weather_screen/curent_weather_screen_view.dart';
 import 'package:weather_app/ui/view/home/home_view.dart';
@@ -30,6 +31,10 @@ import 'package:weather_app/ui/view/weather_screen/weather_screen_view.dart';
     Presolve(
       classType: ConnectivityService,
       presolveUsing: ConnectivityService.getInstance,
+    ),
+    Presolve(
+      classType: LocationService,
+      presolveUsing: LocationService.getInstance,
     ),
   ],
   logger: StackedLogger(),

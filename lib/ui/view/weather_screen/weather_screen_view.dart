@@ -26,6 +26,7 @@ class WeatherScreenView extends HookWidget {
 
         
     return ViewModelBuilder<WeatherScreenViewModel>.reactive(
+      onViewModelReady: (model) => model.initState(),
       builder: (context, model, child) => Scaffold(
         appBar: AppBar(
           backgroundColor: model.theme.primaryColor,

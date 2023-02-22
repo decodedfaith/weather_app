@@ -27,6 +27,12 @@ class CurrentWeatherScreenViewModel extends BaseViewModel {
     // _weatherBloc.dispatch(FetchWeather(
     //     longitude: position.longitude, latitude: position.latitude));
 
+    //TODO: Handle nullable locationData
+    var long = locationService.locationData!.longitude;
+    var lat = locationService.locationData!.latitude;
+
+    weather = await weatherApiService.getWeatherDataFromLocation(
+        longitude: long, latitude: lat);
     return WeatherResponse();
   }
 

@@ -29,12 +29,20 @@ class WeatherApiService {
     log.i('Weather_API constructed and DIO setup registered');
   }
 
-  Future<String?> getCityNameFromLocation(
+  Future<WeatherResponse> getWeatherDataFromLocation(
       {required double latitude, required double longitude}) async {
     final url =
         '$baseUrl/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey';
     final ApiResponse? res = await get(url: url);
-    //TODO:
+    
+    if (res != null && res.statusCode == 200) {
+      log.e(res.data);
+      log.e(res.statusCode);
+      log.e(res.statusMessage);
+      return WeatherResponse.fromJson(res.data);
+    } else {
+      return WeatherResponse();
+    }
   }
 
   Future<WeatherResponse> getWeatherData(String cityName) async {

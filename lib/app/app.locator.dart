@@ -14,6 +14,7 @@ import 'package:stacked_services/src/snackbar/snackbar_service.dart';
 
 import '../services/app_services/connectivity_service.dart';
 import '../services/app_services/local_storage_services.dart';
+import '../services/app_services/location_service.dart';
 import '../services/core_services/weather_api_service.dart';
 
 final locator = StackedLocator.instance;
@@ -36,4 +37,7 @@ Future<void> setupLocator(
 
   final connectivityService = await ConnectivityService.getInstance();
   locator.registerSingleton(connectivityService);
+
+  final locationService = await LocationService.getInstance();
+  locator.registerSingleton(locationService);
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:weather_app/app/app.router.dart';
 import 'package:weather_app/app/locator_service.dart';
 import 'package:weather_app/model/weather.dart';
@@ -9,7 +8,6 @@ import 'package:weather_app/utilities/cities.dart';
 import 'package:weather_app/utilities/constants.dart';
 import 'package:weather_app/utilities/enums.dart';
 import 'package:weather_app/utilities/themes.dart';
-import 'package:geolocator/geolocator.dart';
 
 class WeatherScreenViewModel extends BaseViewModel {
   WeatherResponse? weather;
@@ -18,7 +16,6 @@ class WeatherScreenViewModel extends BaseViewModel {
   List<WeatherResponse> citiesWeatherResponse = [];
 
   Future<void> initState() async {
-    fetchWeatherWithCity();
 
     //Retrieve Cached List of strings 
     List<String>? retrivedList =
@@ -43,7 +40,7 @@ class WeatherScreenViewModel extends BaseViewModel {
         showCityChangeDialog(context);
         break;
       case OptionsMenu.settings:
-        // Navigator.of(context).pushNamed("/settings");
+      //TODO: Implement Settings
         break;
       case OptionsMenu.currentLocationWeather:
         navigationService.navigateTo(Routes.currentWeatherScreenView);
@@ -62,25 +59,6 @@ class WeatherScreenViewModel extends BaseViewModel {
       citiesWeatherResponse.add(rr);
     }
     return citiesWeatherResponse;
-  }
-
-  fetchWeatherWithLocation() async {
-    // var permissionHandler = PermissionHandler();
-    // var permissionResult = await permissionHandler
-    //     .requestPermissions([PermissionGroup.locationWhenInUse]);
-
-    // switch (permissionResult[PermissionGroup.locationWhenInUse]) {
-    //   case PermissionStatus.denied:
-    //   case PermissionStatus.unknown:
-    //     print('location permission denied');
-    //     showLocationDeniedDialog(permissionHandler);
-    //     throw Error();
-    // }
-
-    Position position = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.low);
-    // _weatherBloc.dispatch(FetchWeather(
-    //     longitude: position.longitude, latitude: position.latitude));
   }
 
   void showLocationDeniedDialog(context) {
