@@ -3,6 +3,8 @@ import 'package:stacked/stacked.dart';
 import 'package:weather_app/ui/view/home/home_view_model.dart';
 import 'package:weather_app/ui/view/weather_screen/weather_screen_view.dart';
 
+//BASE LANDING UI TO AWAIT INITIALISING THE APPS SERVICES, COULD AS WELL
+//BE A SPLASH SCREEN
 class HomeView extends StatelessWidget {
   const HomeView({Key? key}) : super(key: key);
 
