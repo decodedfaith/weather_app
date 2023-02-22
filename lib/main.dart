@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:weather_app/app/app.locator.dart';
 import 'package:weather_app/app/app.router.dart';
+import 'package:weather_app/ui/shared/setup_dialog_ui.dart';
 
 import 'services/app_services/snackbar_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupLocator();
+  setupDialogUi();
   setupSnackbar();
   runApp(const MyApp());
 }
