@@ -26,5 +26,12 @@ enum TemperatureUnit {
 enum OptionsMenu {
   changeCity,
   settings,
-  currentLocationWeather
+  currentLocationWeather,
+}
+
+/// The type of dialog to show
+enum DialogType {
+  basic,
+  form,
+  custom, citySelector,
 }
