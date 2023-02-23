@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/model/weather.dart';
 import 'package:weather_app/ui/view/widgets/value_tile.dart';
+import 'package:weather_app/utilities/converters.dart';
 
 /// Renders a horizontal scrolling list of weather conditions
 /// Used to show forecast
@@ -16,6 +17,7 @@ class ForecastHorizontal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+ 
     return SizedBox(
       height: 70,
       child: ListView.separated(
@@ -33,9 +35,11 @@ class ForecastHorizontal extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10, right: 10),
             child: Center(
               child: ValueTile(
-                DateFormat('E, ha').format(
-                  DateTime.fromMillisecondsSinceEpoch(item.timezone! * 1000),
-                ),
+                //TODO: To be revised soon
+                // DateFormat('E, ha').format(
+                //   DateTime.fromMillisecondsSinceEpoch(item.timezone! * 1000),
+                // ),
+                formatTimeZoneOffset(item.timezone!),
                 iconData: item.weather![0].getIconData(),
                 '${item.main!.temp}°',
               ),

@@ -10,3 +10,14 @@ intToDouble(dynamic val) {
     throw Exception("value is not of type 'int' or 'double' got type '${val.runtimeType}'");
   }
 }
+
+ String formatTimeZoneOffset(int offsetSeconds) {
+      // Convert offset from seconds to hours
+      double offsetHours = offsetSeconds / 3600;
+      // Format offset as a string with +/- sign
+      String formattedOffset = offsetHours >= 0
+          ? '+${offsetHours.toStringAsFixed(1)}'
+          : offsetHours.toStringAsFixed(1);
+      // Return formatted offset string
+      return 'GMT$formattedOffset';
+    }

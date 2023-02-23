@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Weather_app',
       navigatorKey: StackedService.navigatorKey,
       onGenerateRoute: StackedRouter().onGenerateRoute,
-      initialRoute: Routes.homeView,
-    );
+      initialRoute: Routes.weatherScreenView,
+    ); 
   }
 }

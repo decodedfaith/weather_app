@@ -48,18 +48,22 @@ class WeatherScreenViewModel extends BaseViewModel {
     }
   }
 
-  Future<WeatherResponse> fetchWeatherWithCity({city}) async {
-    weather = await weatherApiService.getWeatherData('lagos');
-    return weather!;
-  }
+  // Future<WeatherResponse> fetchWeatherWithCity({city}) async {
+  //   weather = await weatherApiService.getWeatherData('lagos');
+  //   return weather!;
+  // }
 
   Future<List<WeatherResponse>> fetchWeatherWithCities() async {
      List<WeatherResponse> response = [];
 
     for (var city in cities) {
       var data = await weatherApiService.getWeatherData(city);
-      response.add(data);
+      if(data != null){
+        response.add(data);
+      }
+      
     }
+    
     citiesWeatherResponse = response;
     return citiesWeatherResponse;
   }

@@ -34,7 +34,7 @@ class WeatherApiService {
     final url =
         '$baseUrl/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey';
     final ApiResponse? res = await get(url: url);
-    
+
     if (res != null && res.statusCode == 200) {
       log.e(res.data);
       log.e(res.statusCode);
@@ -45,7 +45,7 @@ class WeatherApiService {
     }
   }
 
-  Future<WeatherResponse> getWeatherData(String cityName) async {
+  Future<WeatherResponse?> getWeatherData(String cityName) async {
     log.e('waiting  ');
     final url = '$baseUrl/data/2.5/weather?q=$cityName&appid=$apiKey';
 
@@ -56,9 +56,8 @@ class WeatherApiService {
       log.e(res.statusCode);
       log.e(res.statusMessage);
       return WeatherResponse.fromJson(res.data);
-    } else {
-      return WeatherResponse();
     }
+    return null;
   }
 
   Future<List<Weather>> getForecast(String cityName) async {
